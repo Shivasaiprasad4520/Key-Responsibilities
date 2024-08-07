@@ -1,0 +1,100 @@
+Shell- Scripting:
+
+creating a shell file in linux-machine
+cmd: touch filename.sh
+if you want check the file with timestamp and permission
+cmd: ls -ltr
+(*man cmd is manual for every cmd like {man ls})
+-------------------------------------------------------
+*why we use shebang in beginning of the shell script and purpose
+
+#!/bin/bash -> <bash,dash,sh,ksh> --> this is executable for the file which we created shell
+
+#!/bin/sh => if we use this automatically sh links to bash with sim linking, its like  redirecting to bash and this is in linux-machine
+             if we use ubuntu machine then it redirect to the dash 
+shell script:
+vi shiva
+{
+#!/bin/bash
+
+echo "my name is Shiva"
+}
+to execute cmd: sh shiva.sh
+               ./shiva.sh is command is used for any programming which is executeable
+chmod 766 shiva.sh
+
+# to monitor the node health we use the top command 
+cmd: top 
+
+# to monitor the CPU
+cmd: nproc
+
+# to monitor the memory
+cmd:free
+
+==========================================================
+*
+vi node-health.sh
+{
+#!/bin/bash
+
+(following are called as metadata in general comment section)
+################################
+# Author: ShivaSai
+# Date: 01/12/2022
+#
+# This script outputs the node health
+#
+# Version: v1
+################################
+
+set -x # debug mode  (set -x is debug mode print the script in debug mode)
+set -e # exit  (set -e exit the script when there is an error. the main drawback of set -e is some error in file that is integrating with second cmd means using pipe cmd then file will execute with the error,
+                actually the shell is focused on second cmd which is proper cmd the pipe is spread and make it possible for reducing this type of error we use 'set -o' for not executing the file with this type
+                of error
+set -o # pipefail                         
+
+df -h
+
+free -g
+
+nproc
+
+ps -ef | grep "amazon" | awk -F" " '{print $2}'
+}
+============================================================================================
+* to check the processores which are running in pc or Virtual machine
+cmd: ps
+* to check the hide processor
+cmd: ps -ef
+
+* to check the processores with ID numbers
+cmd: ps -ef | grep "amazon" | awk -F" " '{print $2}'
+
+cmd: grep (this "grep" cmd is used for gathering particular processor or line in machin)
+cmd:  | ->pipe (this | pipe cmd used for integrating the two cmds like it send first cmd o/p to second cmd)
+cmd: awk -F" " '{print $2 or 3 or 5}' (it can the filter-out from the output means if we want particular colum of the processor or machin then we use awk with colum id with print statement
+                                       [-F" " '{print $2}']  F is used for field separator and 2,3 or any number that represent the colum number)
+
+cmd: curl -I http:amazon.com or curl -X GET api.apple.api (Transfers data from or to a server using various protocols, often used for testing API endpoints and network services)
+cmd: find / -name shiva (filename which u finding it. if permission denied use sudo Infront of find cmd. basically find cmd use for search the file and that file know to you but path don't 
+                          or forgetten the were u keep it 
+cmd: kill -9 java (it is basically a kill command that is terminate particular file or process or anything)
+cmd: trap "echo dont use the ctlr+c" SIGINT(it is basically trap the signal and execute the system behalf of u)
+
+======================================================================================
+sample-if-else-syntax.sh
+
+{
+a=3
+b=5
+
+if [ $a >$b ]
+then
+   echo "a is greater then b "
+else
+   echo "b is greater then a "
+if
+}
+
+automation is to loop
