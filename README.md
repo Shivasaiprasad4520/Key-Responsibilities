@@ -98,7 +98,8 @@ Showcasing and Leveraging the Skill-Set i have with Handson Practices in Various
    ==================
    linux-commands:
    --------------
-   ls  #List directory contents 📂
+   linux for shell scripting
+1  `hashtag#ls` :List directory contents 📂
 2. `hashtag#cd`: Change directory 🔄
 3. `hashtag#pwd`: Print working directory 📍
 4. `hashtag#mkdir`: Create a directory 📁
