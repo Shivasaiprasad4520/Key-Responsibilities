@@ -1,0 +1,37 @@
+  IAM User Role :
+ ===============
+   AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. With IAM, you can centrally manage permissions that control which AWS resources users can access.
+You use IAM to control who is authenticated (sign in) and authorized (has permissions) to use resources
+
+Features of IAM :
+---------------
+1. Centralized Control of AWS Account
+2. Identity Federation
+3. Eventually Consistent
+4. Multi-Factory Authentication
+_____________________________________________________________________________________________________
+Way to Create IAM and Accessing and Adding MFA :
+----------------------------------------------
+
+1) To create IAM account login to the Root account and search IAM  in search bar then click on the IAM 
+2) Now in IAM go to the users then create  user
+3) Step 1 --> Specify user details -->give user name --> then check-in "Provide user access to the AWS Management Console" --> give custom password --> then uncheck "users must create a new password at sign-in" --> save it
+4) step 2 --> set permissions --> keep all defualt -> save it
+5) step 3 --> review and create --> keep all defualt --> give tag --> create user 
+6) Copy the Console sign-in url past it in the other browser and login with user anme and password 
+7) Premission are not assigned to IAM account for that we go back to root account and give access to IAM for that click on the user in Root -> IAM and apply permission to the user
+8) Add Permission -->click on attach policies directly -->click on that permission do you want to give --> then next --> add permission
+Add MFA to IAM user
+---------------------
+ AWS MFA  is a simple best practice that adds an extra layer of protection on top of your user name and password. these multiple factors provide increased security for your AWS account settings and resources
+
+MFA is addition security key for the IAM account for that attach MFA to IAM then install google authentication and scan a QR code which is get in a process of assigning MFA then u got a code use that code to sign in IAM account
+This is for root account:
+1) To add MFA go to security credentials in that MFA present click on assign MFA device
+2) give device name then select Authenticator app in mobile then click next -> it show QR code scan that QR and google send two code to u paste it --> add MFA
+---------------------------------------------------------------------
+This is for IAM account:
+1) To add MFA clickon user then go to security credentials in that MFA present click on assign MFA device
+2) give device name then select Authenticator app in mobile then click next -> it show QR code scan that QR and google send two code to u paste it --> add MFA
+
+
