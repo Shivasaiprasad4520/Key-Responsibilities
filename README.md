@@ -11,6 +11,10 @@ Showcasing and Leveraging the Skill-Set i have with Handson Practices in Various
    --------------
    2.IAM User Role
    ----------------
+   AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. With IAM, you can centrally manage permissions that control which AWS resources users can 
+   access. You use IAM to control who is authenticated (sign in) and authorized (has permissions) to use resources.
+   
+
    3.VPC
    ---------
    4.S3 Bucket
@@ -195,8 +199,25 @@ Showcasing and Leveraging the Skill-Set i have with Handson Practices in Various
    ------------------------
    2.Git Workflow
    ------------------------
+
+   ![git work flow](https://github.com/user-attachments/assets/9390180d-4b2a-4af4-80a5-53ca0896a116)
+
    3.Git Brunching Strategy
    ------------------------
+  Branches are independent lines of work, stemming from the original codebase. Developers create separate branches for independently working on features so that changes from other developers don’t interfere with an individual’s line of work. Developers can easily pull changes from different branches and also merge their code with the main branch. This allows easier collaboration for developers working on one codebase.
+  
+The following are the steps for creating a branch
+1) To Create a branch with the name you want to specify, here we are naming the branch name as “new-feature”.
+   git branch new-feature
+2) Now navigate to the new feature branch from the current branch with the following command:
+   git checkout  new-feature
+3) To Check Current Branch
+   git branch
+4) To Merge the branch to master
+   git merge new-feature
+5) Ensure you are present on the branch you want to delete.
+   git branch -d
+
    4.Git Stashing
    ------------------------
    5.Git Conflicts
