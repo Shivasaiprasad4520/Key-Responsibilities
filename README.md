@@ -25,9 +25,13 @@ Showcasing and Leveraging the Skill-Set i have with Handson Practices in Various
 4) step 2 --> set permissions --> keep all defualt -> save it
 5) step 3 --> review and create --> keep all defualt --> give tag --> create user 
 6) Copy the Console sign-in url past it in the other browser and login with user name and password
+   
  ![IAM account](https://github.com/user-attachments/assets/33d4504e-53f0-4cff-8bd3-cbaed50c80fc)
 7) Premission are not assigned to IAM account for that we go back to root account and give access to IAM for that click on the user in Root -> IAM and apply permission to the user
 8) Add Permission -->click on attach policies directly -->click on that permission do you want to give --> then next --> add permission
+
+Multi-factor Authentication
+      ![WhatsApp Image 2024-08-14 at 16 55 03_0da24c9f](https://github.com/user-attachments/assets/9c602a56-891b-45c5-a35f-f68763ec6cd7)
 
    3.VPC
    ---------
