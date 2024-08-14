@@ -13,7 +13,21 @@ Showcasing and Leveraging the Skill-Set i have with Handson Practices in Various
    ----------------
    AWS Identity and Access Management (IAM) is a web service that helps you securely control access to AWS resources. With IAM, you can centrally manage permissions that control which AWS resources users can 
    access. You use IAM to control who is authenticated (sign in) and authorized (has permissions) to use resources.
-   
+   Way to Create IAM and Accessing and Adding MFA :
+----------------------------------------------
+
+1) To create IAM account login to the Root account and search IAM  in search bar then click on the IAM
+  ![IAM](https://github.com/user-attachments/assets/b81f4be6-8ee2-4e67-a5cd-83de1807da4f)
+2) Now in IAM go to the users then create  user
+3) Step 1 --> Specify user details -->give user name --> then check-in "Provide user access to the AWS Management Console" --> give custom password --> then uncheck "users must create a new password at sign-in" ---> save it
+ ![created iam](https://github.com/user-attachments/assets/e52c1a15-9f3b-45a4-b387-45c0826a0d31)
+
+4) step 2 --> set permissions --> keep all defualt -> save it
+5) step 3 --> review and create --> keep all defualt --> give tag --> create user 
+6) Copy the Console sign-in url past it in the other browser and login with user name and password
+ ![IAM account](https://github.com/user-attachments/assets/33d4504e-53f0-4cff-8bd3-cbaed50c80fc)
+7) Premission are not assigned to IAM account for that we go back to root account and give access to IAM for that click on the user in Root -> IAM and apply permission to the user
+8) Add Permission -->click on attach policies directly -->click on that permission do you want to give --> then next --> add permission
 
    3.VPC
    ---------
