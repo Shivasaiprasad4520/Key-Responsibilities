@@ -28,3 +28,36 @@ Jenkins master/agent model:
 10)create a job on master and run job on agent for that run a job 
 -->dashboard --> new item (name of the item)--> free style project -> select git with git repository URL --> build steps --> invoke top-level maven target-->maven version (maven3.6.9) 
 --> goals (clean install package) --> save   ==> while run a job it runs in master node we want to run in slave for that -->click on job id go to configure in that general tab tick the restrict where this project can be run --> label expression (master or node id) then save it
+
+
+___________________________________________________________________________________________________________________________________________________________________________________
+Jenkins master/agent model:
+--------------------------
+*steps to install & configure agent server:
+------------------------------------------
+ 
+1)create a ubuntu server
+
+2)create a user in agent server
+
+3)update password to the user
+
+4)modify sshd config file in server
+
+5)Restart SSHD services
+
+6)Give full permissions to user
+
+7)install java latest version on agent server
+  
+
+8)integrate agent with master by using user based authentication
+   in Jenkins master login -> Dashboard -> manage Jenkins -> nodes -> create new node -> node name(slave1) -> select permanent agent -> keep some default and give some following steps 
+-> remote root directory (/home/shiva)-> labels (slave1) -> lunch method (lunch agent via ssh) -> host (IP address of the agent server) -> credentials (add your agent server user with id) 
+-> host key verification strategy (non verifying verification strategy) -> save
+
+9)install git latest version on agent server
+ 
+10)create a job on master and run job on agent for that run a job 
+-->dashboard --> new item (name of the item)--> free style project -> select git with git repository URL --> build steps --> invoke top-level maven target-->maven version (maven3.6.9) 
+--> goals (clean install package) --> save   ==> while run a job it runs in master node we want to run in slave for that -->click on job id go to configure in that general tab tick the restrict where this project can be run --> label expression (master or node id) then save it
