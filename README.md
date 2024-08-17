@@ -95,6 +95,64 @@ Multi-factor Authentication
    ------------------------
    6.Multi - Branching Pipeline
    ------------------------
+   7.Jenkins - Slave Model
+   -----------------------
+ 1) Create a ubuntu server Instance with port number 8080 and T2 medium For Jenkins Master 
+    ![jenkins-master](https://github.com/user-attachments/assets/782b5ba5-2b43-4096-a4ac-ed689202d475)
+    
+ 2) Connect Instance to mobaXterm and install Jenkins on the server 
+  {
+sudo apt-get update -y
+
+sudo apt-get install openjdk-17-jdk -y
+
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian/jenkins.io-2023.key
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install jenkins -y
+
+sudo systemctl status jenkins
+} 
+3)after install Jenkins connect to browser with Jenkins (IP address:8080) then login 
+  ![install jenkins](https://github.com/user-attachments/assets/16ad9c07-e4a0-455a-8cd7-4dea92c3c910)
+
+4)After login Jenkins then create a agent server connect to server in mobaXterm go to root account 
+  ![agent](https://github.com/user-attachments/assets/812e8cd6-fb58-4b33-bb63-c2286848d5d3)
+
+5) In root account check present working  directory (cmd:pwd) then make a directory (cmd:mkdir jenkins-slave)
+
+6) In that directory generate a SSH key (cmd:ssh-keygen) it generate three keys those are authoried key, private key, public key
+   follow this cmd : ~ cd
+                     cd /.ssh
+                      ls or ll (u will see key)
+  ![agent-install](https://github.com/user-attachments/assets/25a51545-223e-4cd1-88b3-5ef205afe0b3)
+
+7) open public key and copy that key then open authorized key and paste the public key 
+
+8) open private key copy that key then go to Jenkins master GUI following this steps
+ jenkins-master -->Dashboard --> manage Jenkins -->click on credentials --> click on global --> add credential -->kind [SSH Username with private key] -->give ID, description, username
+ --> enable enter directly then paste private key and create
+   ![cred](https://github.com/user-attachments/assets/5373b7ad-ead4-4e03-9312-b9a53fe46adf)
+
+
+9)install java latest version on agent server
+  
+
+10)integrate agent with master by using user based authentication
+   in Jenkins master login -> Dashboard -> manage Jenkins -> nodes -> create new node -> node name(slave1) -> select permanent agent -> keep some default and give some following steps 
+-> remote root directory (/home/ubuntu/jenkins-slave)-> labels (slave1) -> lunch method (lunch agent via ssh) -> host (IP address of the agent server) -> credentials (select the credential which is created in previous step) --> host key verification strategy (non verifying verification strategy) -> save
+
+11)install git latest version on agent server
+ 
+10)create a job on master and run job on agent for that run a job 
+-->dashboard --> new item (name of the item)--> free style project -> select git with git repository URL --> build steps --> invoke top-level maven target-->maven version (maven3.6.9) 
+--> goals (clean install package) --> save   ==> while run a job it runs in master node we want to run in slave for that -->click on job id go to configure in that general tab tick the restrict where this project can be run --> label expression (master or node id) then save it
    
 3) Docker -:
    ======
