@@ -33,30 +33,53 @@ Jenkins master/agent model:
 ___________________________________________________________________________________________________________________________________________________________________________________
 Jenkins master/agent model:
 --------------------------
-*steps to install & configure agent server:
-------------------------------------------
- 
-1)create a ubuntu server
 
-2)create a user in agent server
+1) Create a ubuntu server Instance with port number 8080 and T2 medium For Jenkins Master 
 
-3)update password to the user
+2) Connect Instance to mobaXterm and install Jenkins on the server 
+  {
+sudo apt-get update -y
 
-4)modify sshd config file in server
+sudo apt-get install openjdk-17-jdk -y
 
-5)Restart SSHD services
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc \
+  https://pkg.jenkins.io/debian/jenkins.io-2023.key
 
-6)Give full permissions to user
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
 
-7)install java latest version on agent server
+sudo apt-get update
+
+sudo apt-get install jenkins -y
+
+sudo systemctl status jenkins
+} 
+3)after install Jenkins connect to browser with Jenkins (IP address:8080) then login 
+
+4)After login Jenkins then create a agent server connect to server in mobaXterm go to root account 
+
+5) In root account check present working  directory (cmd:pwd) then make a directory (cmd:mkdir jenkins-slave)
+
+6) In that directory generate a SSH key (cmd:ssh-keygen) it generate three keys those are authoried key, private key, public key
+   follow this cmd : ~ cd
+                     cd /.ssh
+                      ls or ll (u will see key)
+
+7) open public key and copy that key then open authorized key and paste the public key 
+
+8) open private key copy that key then go to Jenkins master GUI following this steps
+ jenkins-master -->Dashboard --> manage Jenkins -->click on credentials --> click on global --> add credential -->kind [SSH Username with private key] -->give ID, description, username
+ --> enable enter directly then paste private key and create
+
+9)install java latest version on agent server
   
 
-8)integrate agent with master by using user based authentication
+10)integrate agent with master by using user based authentication
    in Jenkins master login -> Dashboard -> manage Jenkins -> nodes -> create new node -> node name(slave1) -> select permanent agent -> keep some default and give some following steps 
--> remote root directory (/home/shiva)-> labels (slave1) -> lunch method (lunch agent via ssh) -> host (IP address of the agent server) -> credentials (add your agent server user with id) 
--> host key verification strategy (non verifying verification strategy) -> save
+-> remote root directory (/home/ubuntu/jenkins-slave)-> labels (slave1) -> lunch method (lunch agent via ssh) -> host (IP address of the agent server) -> credentials (select the credential which is created in previous step) --> host key verification strategy (non verifying verification strategy) -> save
 
-9)install git latest version on agent server
+11)install git latest version on agent server
  
 10)create a job on master and run job on agent for that run a job 
 -->dashboard --> new item (name of the item)--> free style project -> select git with git repository URL --> build steps --> invoke top-level maven target-->maven version (maven3.6.9) 
