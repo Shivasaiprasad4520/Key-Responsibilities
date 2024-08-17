@@ -95,8 +95,10 @@ Multi-factor Authentication
    ------------------------
    6.Multi - Branching Pipeline
    ------------------------
+   ------------------------------------------------------------------------------------------------------------------------------------------------------------
    7.Jenkins - Slave Model
    -----------------------
+   
  1) Create a ubuntu server Instance with port number 8080 and T2 medium For Jenkins Master 
     ![jenkins-master](https://github.com/user-attachments/assets/782b5ba5-2b43-4096-a4ac-ed689202d475)
     
