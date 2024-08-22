@@ -21,11 +21,13 @@ ______
 6. Create shell scripting file in server
    -
    vi aws_resource_project.sh
-{
+   _______________________________________________________________________________
+({{
 #!/bin/bash
 
 ###############################################################################
-# Author: Shivasai
+#Author: Shivasai
+
 # Version: v0.0.2
 
 # Script to automate the process of listing all the resources in an AWS account
@@ -140,7 +142,7 @@ case $aws_service in
         exit 1
         ;;
 esac
-}
+}})
  _______
 7. Execute that file and see the Output 
    -
