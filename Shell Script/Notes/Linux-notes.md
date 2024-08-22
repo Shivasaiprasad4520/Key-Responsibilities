@@ -1,12 +1,12 @@
-amazon Linux default user  -->ec2-user
+Amazon Linux default user  -->ec2-user
 ------------------------
-ubuntu default user  -->ubuntu
+Ubuntu default user  -->ubuntu
 -------------------
 CentOS  -->centos
 -----
 RHEL  -->ec2-user
 ----
-windows default user  -->Administrator
+Windows default user  -->Administrator
 --------------------
 
 
@@ -58,65 +58,66 @@ logic volume management-:
 
 ------------------------------------------------------------------------------
 
-to check the disk in vm we use and it show case that raw disk
-cmd: parted -l
+1) to check the disk in vm we use and it show case that raw disk
+   parted -l
+_________________________________________________________________
+2) listing in block state
+   lsblk
+________________________________________________________________
+2) to create physical volume 
+   pvcreate /dev/sdb or c,d,e,f
+________________________________________________________________
+4) to check the physical volume created or not 
+   pvs  and cmd: pvdisplay (if we use this command we can see in depth)
+________________________________________________________________
+5) to create a volume group
+   vgcreate volg_1 /dev/sbd /dev/sdc     [vgcreate+"nameofthevolumegroup"+"/dev/sdc"] if u want to add one more volume then [vgcreate+"nameofthevolumegroup"+"/dev/sdc" "/dev/sdb"]
+________________________________________________________________
+6) to check the volume group created or not
+   vgs or vgs -v
+________________________________________________________________
+7) to create logic volume 
+   lvcreate -L 4G -n logvol_1 volg_1     [lvcreate -L +"howmuch-GB-allocate" -n+nameofthelogicalvolume+volumegroupname]
+________________________________________________________________
+8) to check the volume group created or not
+   lvs
+________________________________________________________________
+9) in previous step 1 logical volume created now we want to format that logical volume then mount on a directory for that we make file system
+    mkfs.ext4 /dev/vg
 
-listing in block state
-cmd: lsblk
+    mkfs.ext4 /dev/vlog_1/logvol_1         [mkfs.ext4 /dev/+groupvolume+logicalvolume]
 
-to create physical volume 
-cmd: pvcreate /dev/sdb or c,d,e,f
-
-to check the physical volume created or not 
-cmd: pvs  and cmd: pvdisplay (if we use this command we can see in depth)
-
-to create a volume group
-cmd: vgcreate volg_1 /dev/sbd /dev/sdc     [vgcreate+"nameofthevolumegroup"+"/dev/sdc"] if u want to add one more volume then [vgcreate+"nameofthevolumegroup"+"/dev/sdc" "/dev/sdb"]
-
-to check the volume group created or not
-cmd: vgs or vgs -v
-
-to create logic volume 
-cmd: lvcreate -L 4G -n logvol_1 volg_1     [lvcreate -L +"howmuch-GB-allocate" -n+nameofthelogicalvolume+volumegroupname]
-
-to check the volume group created or not
-cmd: lvs
-
-in previous step 1 logical volume created now we want to format that logical volume then mount on a directory for that we make file system
-cmd: mkfs.ext4 /dev/vg
-
-cmd: mkfs.ext4 /dev/vlog_1/logvol_1         [mkfs.ext4 /dev/+groupvolume+logicalvolume]
-
-cmd: partprobe      {this cmd is for what thinks are going in system that are to update to kernel:}
-
-to mount logic volume to particular directory named as shiva
-cmd: mount /dev/volg_1/logvol_1 /shiva/
-
-to check that is mounted or not
-cmd: df -h
-
-to watch directory we use following cmd
-cmd: watch df -h /dev/mapper/vlog_1-logvol_1     [df -h + pathnameofdirectory]
-
-now if logical file system is full then we want extend to the existing one
-cmd: lvextend -L+5G /dev/vlog-1/logvol-1
+    partprobe      {this cmd is for what thinks are going in system that are to update to kernel:}
+________________________________________________________________
+10) to mount logic volume to particular directory named as shiva
+     mount /dev/volg_1/logvol_1 /shiva/
+________________________________________________________________
+11) to check that is mounted or not
+    df -h
+________________________________________________________________
+12) to watch directory we use following cmd
+    watch df -h /dev/mapper/vlog_1-logvol_1     [df -h + pathnameofdirectory]
+________________________________________________________________
+13) now if logical file system is full then we want extend to the existing one
+    lvextend -L+5G /dev/vlog-1/logvol-1
+________________________________________________________________
 
 to update file system we resize the directory
 cmd: resize2fs /dev/mapper/volg-1/logvol-1
 ------------------------------------
 snapshot:
-to create a snapshot for a volume or file
-cmd: lvcreate -s -n sai_snapshot -L 1G /dev/mapper/vlog_1-logvol_1
+*to create a snapshot for a volume or file
+    lvcreate -s -n sai_snapshot -L 1G /dev/mapper/vlog_1-logvol_1
      [lvcreate -s for snapshot -n for name sai_snapshot -L 1G how much gb for snapshot + path of the file]
-
-to merge the snapshot to original logical volume
-cm: lvconvert --mergesnapshot /dev/vlog-1/sai_snapshot
-
-to reterive the data we should deactivate and activate then the data will update
-cmd: umount /shiva/
-cmd: lvchange -an /dev/mapper/vlog_1-logvol_1    --> deactivate
-cmd: lvchange -ay /dev/mapper/vlog_1-logvol_1    --> activate
-cmd: mount /dev/mapper/vlog_1-logvol_1 /shiva/
+__________________________________________________________________
+*to merge the snapshot to original logical volume
+    lvconvert --mergesnapshot /dev/vlog-1/sai_snapshot
+____________________________________________________________________
+*to reterive the data we should deactivate and activate then the data will update
+    umount /shiva/
+    lvchange -an /dev/mapper/vlog_1-logvol_1    --> deactivate
+    lvchange -ay /dev/mapper/vlog_1-logvol_1    --> activate
+    mount /dev/mapper/vlog_1-logvol_1 /shiva/
 
 
 ----------------
