@@ -1,9 +1,13 @@
 amazon Linux default user  -->ec2-user
+------------------------
 ubuntu default user  -->ubuntu
+-------------------
 CentOS  -->centos
+-----
 RHEL  -->ec2-user
+----
 windows default user  -->Administrator
------------------------
+--------------------
 
 
 Linux family
