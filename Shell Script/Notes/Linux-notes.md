@@ -14,18 +14,22 @@ Linux family
 ============
 
 1) debein family:
-1 ubuntu
-2 fedora
-3 AVlinux
-4GRML
+   ============
+1 ubuntu,
+2 fedora,
+3 AVlinux,
+4 GRML
+---------------
 {* apt-get --> package manager
    apt-get install java -y}
    _______________________________
 2)Redhut family
-1RHEL
-2CentOS
-3Suselinux
-4Amazon linux
+===============
+1 RHEL,
+2 CentOS,
+3 Suselinux,
+4 Amazon linux,
+--------------
 {* yum --> package manager
    yum install java -y}
    
@@ -34,20 +38,18 @@ Linux family
 Linux: basic commands -:
 =====================
  -> user management, swap management, sim link, hard link, dics management, process management, services management, AWS Volume, NFS, file system
-
-cd /opt
-df -h
-lsblk
-lsblk -f
-mkfs.ext4 /dev/xvdx
-ll
-mkdir data
-ll
-mount /dev/xvdd /opt/data
-df -h
+    ______________________________________________________________________________________________________________________________________________
+cd /opt,
+df -h,
+lsblk,
+lsblk -f,
+mkfs.ext4 /dev/xvdx,
+ll,
+mkdir data,
+ll,
+mount /dev/xvdd /opt/data,
+df -h,
 cat /etc/fstab
-
-
 
 logic volume management-:
 =======================
@@ -59,30 +61,41 @@ logic volume management-:
 ------------------------------------------------------------------------------
 
 1) to check the disk in vm we use and it show case that raw disk
+   ------------------------------------------------------------
    parted -l
 _________________________________________________________________
 2) listing in block state
+   ----------------------
    lsblk
 ________________________________________________________________
-2) to create physical volume 
+2) to create physical volume
+   ---------------------------
    pvcreate /dev/sdb or c,d,e,f
 ________________________________________________________________
-4) to check the physical volume created or not 
+4) to check the physical volume created or not
+   - 
    pvs  and cmd: pvdisplay (if we use this command we can see in depth)
 ________________________________________________________________
 5) to create a volume group
-   vgcreate volg_1 /dev/sbd /dev/sdc     [vgcreate+"nameofthevolumegroup"+"/dev/sdc"] if u want to add one more volume then [vgcreate+"nameofthevolumegroup"+"/dev/sdc" "/dev/sdb"]
+   -
+   vgcreate volg_1 /dev/sbd /dev/sdc
+   _
+  [vgcreate+"nameofthevolumegroup"+"/dev/sdc"] if u want to add one more volume then [vgcreate+"nameofthevolumegroup"+"/dev/sdc" "/dev/sdb"]
 ________________________________________________________________
 6) to check the volume group created or not
+   -
    vgs or vgs -v
 ________________________________________________________________
-7) to create logic volume 
+7) to create logic volume
+   -
    lvcreate -L 4G -n logvol_1 volg_1     [lvcreate -L +"howmuch-GB-allocate" -n+nameofthelogicalvolume+volumegroupname]
 ________________________________________________________________
 8) to check the volume group created or not
+   -
    lvs
 ________________________________________________________________
 9) in previous step 1 logical volume created now we want to format that logical volume then mount on a directory for that we make file system
+    -
     mkfs.ext4 /dev/vg
 
     mkfs.ext4 /dev/vlog_1/logvol_1         [mkfs.ext4 /dev/+groupvolume+logicalvolume]
@@ -90,21 +103,26 @@ ________________________________________________________________
     partprobe      {this cmd is for what thinks are going in system that are to update to kernel:}
 ________________________________________________________________
 10) to mount logic volume to particular directory named as shiva
+    -
      mount /dev/volg_1/logvol_1 /shiva/
 ________________________________________________________________
 11) to check that is mounted or not
+    -
     df -h
 ________________________________________________________________
 12) to watch directory we use following cmd
+    -
     watch df -h /dev/mapper/vlog_1-logvol_1     [df -h + pathnameofdirectory]
 ________________________________________________________________
 13) now if logical file system is full then we want extend to the existing one
+    -
     lvextend -L+5G /dev/vlog-1/logvol-1
 ________________________________________________________________
 
 to update file system we resize the directory
-cmd: resize2fs /dev/mapper/volg-1/logvol-1
 ------------------------------------
+ resize2fs /dev/mapper/volg-1/logvol-1
+______________________________________
 snapshot:
 *to create a snapshot for a volume or file
     lvcreate -s -n sai_snapshot -L 1G /dev/mapper/vlog_1-logvol_1
