@@ -12,6 +12,7 @@ windows default user  -->Administrator
 
 Linux family
 ============
+
 1) debein family:
 1 ubuntu
 2 fedora
@@ -19,6 +20,7 @@ Linux family
 4GRML
 {* apt-get --> package manager
    apt-get install java -y}
+   _______________________________
 2)Redhut family
 1RHEL
 2CentOS
