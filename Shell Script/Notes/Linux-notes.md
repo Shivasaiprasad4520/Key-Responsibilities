@@ -50,23 +50,12 @@ cat /etc/fstab
 
 
 logic volume management-:
-==============
-LVM  Architecture :
-       |
-       v 
-Physical Hard Disks  (its a volume or Disk of the Server and it is a default one)
-       |
-       v
- Physical Volume     (in this we create a physical volume from the disk, in this we actually create one or use multiply volume )
-       |              cmd: pvcreate
-       v
-  Volume Group       (in this we sum up the physical volume into a group then we call it as a group volume, we can add multiply volume into one group)
-       |              cmd: vgcreate
-       v
-  Logical Group      (in this we will divide into multiply volume from group volume)
-       |               cmd: lvcreate
-       v
-  File system        (in this we create log file or install software in it )
+=======================
+
+![Screenshot 2024-08-22 224244](https://github.com/user-attachments/assets/a33160ff-2b01-41e3-9b58-d6cbf8773381)
+
+
+
 ------------------------------------------------------------------------------
 
 to check the disk in vm we use and it show case that raw disk
