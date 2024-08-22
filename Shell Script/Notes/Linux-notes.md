@@ -4,6 +4,8 @@ CentOS  -->centos
 RHEL  -->ec2-user
 windows default user  -->Administrator
 -----------------------
+
+
 Linux family
 ============
 1) debein family:
@@ -20,8 +22,11 @@ Linux family
 4Amazon linux
 {* yum --> package manager
    yum install java -y}
-============================================
-Linux: basic commands
+   
+----------------------------------------------------
+
+Linux: basic commands -:
+=====================
  -> user management, swap management, sim link, hard link, dics management, process management, services management, AWS Volume, NFS, file system
 
 cd /opt
@@ -34,9 +39,10 @@ mkdir data
 ll
 mount /dev/xvdd /opt/data
 df -h
------
 cat /etc/fstab
---------
+
+
+
 logic volume management-:
 ==============
 LVM  Architecture :
@@ -55,7 +61,7 @@ Physical Hard Disks  (its a volume or Disk of the Server and it is a default one
        |               cmd: lvcreate
        v
   File system        (in this we create log file or install software in it )
-______________________________________________________________________________
+------------------------------------------------------------------------------
 
 to check the disk in vm we use and it show case that raw disk
 cmd: parted -l
@@ -140,88 +146,65 @@ Here are ten essential troubleshooting commands for Linux systems, often used by
 
 1.top
  - Displays real-time system information, including running processes, CPU usage, memory usage, and more.
-
  top
  
-
 2. htop
  - An improved version of `top` with a more user-friendly interface and additional features.
- 
  htop
  
-
 3. ps
  - Displays information about active processes. Commonly used with options to filter or format output.
- 
  ps aux 
 
 4. netstat
  - Displays network connections, routing tables, interface statistics, masquerade connections, and multicast memberships.
- 
  netstat -tuln
 
 5. ss
  - Provides detailed information about socket connections, similar to `netstat`, but with more modern features and better performance.
- 
  ss -tuln
 
 6. df
  - Displays the amount of disk space used and available on mounted file systems.
- 
  df -h
  
-
 7. du
  - Estimates file space usage, often used to find large files and directories.
  du -sh 
  
-
 8. dmesg
  - Prints the kernel ring buffer messages, useful for diagnosing hardware and driver issues.
- 
  dmesg | less
- 
 
 9. journalctl
  - Queries and displays logs from `systemd` journal, which captures logs from various system services and applications.
-
  journalctl -xe
  
 
 10.ping
  - Tests the reachability of a host on an IP network and measures the round-trip time for messages sent to the destination
-
  ping google.com
 
 11.traceroute
  - Displays the route packets take to a network host, useful for diagnosing network path issues.
-
  traceroute google.com
 
 12.curl
  - Transfers data from or to a server using various protocols, often used for testing API endpoints and network services.
-
  curl -I http://example.com
  
-
 13.nslookup:-
-
  - Queries Internet name servers interactively to find DNS details, such as IP addresses associated with a domain.
-
  nslookup example.com
 
 14.lsof:- 
-
  - Lists open files and the processes that opened them, helpful for diagnosing issues related to file locks and network ports.
- 
  lsof -i ;8080
 
 15.Free:-
-
  - Displays the amount of free and used memory in the system.
- 
  free -h
----------
+------------------------------------------------------------------------------
 Certainly! Here's a list of commands related to each of the specified categories in Linux:
 
 ### User Management
@@ -383,8 +366,10 @@ File editors:
 2)vim --> visual display editor improved
   
 vi is having 3 modes
+--------------------
 
-1)command mode: move cursor top to buttom and left to right
+1)command mode: move cursor top to buttom and left to right:
+----------------------------------------------------------
 delete line                   dd
 undo line                     u
 copy                          yy
@@ -392,13 +377,15 @@ paste                          p
 mv cursor word by word         w
 mv cursor back word by word    b
 
-2)insert/edit/append mode:i  -->to switch insert mode
-modify the content
-3)extended command mode 
+2)insert/edit/append mode:
+-------------------------
+         i  -->to switch insert mode modify the content
+         
+3)extended command mode:
+-----------------------
 esc
 :w --> to save the file
 :q --> to quit the file without save
-========================================================
 
 find (search)
 ---------------
@@ -406,7 +393,6 @@ find (search)
 2) find / -name foldername
 3) find / -name username
 4) find / -name groupname
-=========================
 
 user management:
 ---------------
@@ -416,7 +402,6 @@ passwd username --> to add passwd to user
 vi /etc/sudoers --> to give primission to the user
 su username   --> to switch user
 exit  --> to exit from user
-=============================
 
 file permissions:
 ----------------
