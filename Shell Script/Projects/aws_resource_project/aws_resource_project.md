@@ -2,7 +2,7 @@
    -
 ![Screenshot 2024-08-22 233554](https://github.com/user-attachments/assets/a7033252-98d0-4ee5-b5a4-df4bf8e70c0a)
 
-_______________________________________________________________
+______________________________________________________________
 2. Connect to the Instance Server by using Powershell or Mobaxterm with Keypair
    -
 _______
